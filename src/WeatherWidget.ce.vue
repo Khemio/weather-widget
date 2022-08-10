@@ -44,7 +44,6 @@ onMounted(() => {
   getData();
 
   watch([getWeatherInfoList(), getWeatherInfoList().value], () => {
-      console.log('change')
       storeData();
   } )
 })
