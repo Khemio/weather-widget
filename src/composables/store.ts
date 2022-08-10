@@ -53,7 +53,7 @@ export const fetchGeoData = async (city: String) => {
         fetchWeatherData(location);
 }
 
-const fetchWeatherData = async (location: Location) => {
+const fetchWeatherData = async (location: Location, index: number = weatherInfoList.value.length) => {
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&units=metric&appid=${apiKey}`;
     const res = await fetch(weatherURL);
     const data = await res.json();
@@ -72,8 +72,9 @@ const fetchWeatherData = async (location: Location) => {
         wind: data.wind,
         weather: data.weather[0]
     }
-    // weatherInfoList.value.push(weatherInfo);
-    weatherInfoList.value = [...weatherInfoList.value, weatherInfo];
+    
+    weatherInfoList.value[index] = weatherInfo;
+    weatherInfoList.value = [...weatherInfoList.value];
 
 }
 
@@ -96,5 +97,5 @@ export const getData = () => {
     let locations: Location[] = [];
     weatherInfoList.value = [];
     locations = localStorage.getItem('locationsInfo') ? JSON.parse(localStorage.getItem('locationsInfo')!) : []
-    locations.forEach(location => fetchWeatherData(location))
+    locations.forEach((location, index) => fetchWeatherData(location, index))
 }
