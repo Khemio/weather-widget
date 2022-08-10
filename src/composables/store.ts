@@ -22,7 +22,6 @@ interface WeatherInfo {
     weather: Object
 }
 
-// let locations: Location[] = [];
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
 const weatherInfoList = ref<WeatherInfo[]>([]);
@@ -73,7 +72,8 @@ const fetchWeatherData = async (location: Location) => {
         wind: data.wind,
         weather: data.weather[0]
     }
-    weatherInfoList.value.push(weatherInfo);
+    // weatherInfoList.value.push(weatherInfo);
+    weatherInfoList.value = [...weatherInfoList.value, weatherInfo];
 
 }
 

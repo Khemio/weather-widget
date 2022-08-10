@@ -34,14 +34,19 @@ import LocationInput from '@/components/LocationInput.vue'
 import SettingsMenu from '@/components/SettingsMenu.vue'
 import WeatherCardsList from '@/components/WeatherCardsList.vue'
 
-import { ref, onMounted } from 'vue'
-import { isWeatherInfoEmpty, getData } from './composables/store.js'
+import { ref, onMounted, watch } from 'vue'
+import { isWeatherInfoEmpty, getWeatherInfoList, getData, storeData } from './composables/store.js'
 
 const showList = ref<boolean>(true);
 
 
 onMounted(() => {
   getData();
+
+  watch([getWeatherInfoList(), getWeatherInfoList().value], () => {
+      console.log('change')
+      storeData();
+  } )
 })
 
 </script>
