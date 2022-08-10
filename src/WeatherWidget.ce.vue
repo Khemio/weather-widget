@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto flex items-start justify-center gap-3 mt-5 w-1/2">
+  <div class="flex items-start justify-center gap-3 mt-5">
     <div class="flex flex-col items-center justify-center gap-3">
       <LocationInput v-if="isWeatherInfoEmpty() && showList" />
       
