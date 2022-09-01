@@ -22,8 +22,8 @@ interface WeatherInfo {
     weather: Object
 }
 
-// const apiKey = import.meta.env.VITE_APP_API_KEY;
-const apiKey = '484a19ab386ce8275679f0e917dfd05e';
+const apiKey = import.meta.env.VITE_APP_API_KEY;
+
 
 const weatherInfoList = ref<WeatherInfo[]>([]);
 
